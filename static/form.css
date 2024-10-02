@@ -11,8 +11,23 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    margin-bottom: 20px;
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #D10B0B;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.content {
+    margin-top: 80px; /* Adiciona espaço abaixo do header fixo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Garante que o conteúdo ocupe a largura total */
 }
 
 form {
@@ -31,8 +46,7 @@ label {
 
 input[type="text"],
 input[type="number"],
-input[type="email"],
-select {
+input[type="email"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -42,10 +56,22 @@ select {
     color: white;
 }
 
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-family: 'Gotham-Bold', sans-serif;
+}
+
 input[type="submit"] {
     background-color: #830202;
     color: white;
     padding: 10px 20px;
+    font-family: 'Gotham-Bold', sans-serif;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -56,6 +82,28 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+    transform: scale(1.1);
+}
+
+.btn-voltar {
+    margin-top: 20px; 
+}
+
+button {
+    background-color: #830202;
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Gotham-Bold', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    border: none; 
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+button:hover {
     transform: scale(1.1);
 }
 

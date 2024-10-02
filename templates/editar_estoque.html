@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Estoque</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Editar Estoque</h1>
+    </div>
+    <div class="content">
+        <form method="POST">
+            <label for="product_name">Nome do Produto:</label>
+            <input type="text" id="product_name" name="product_name" value="{{ product[0] }}" disabled><br>
+            <label for="brand">Marca:</label>
+            <input type="text" id="brand" name="brand" value="{{ product[1] }}" disabled><br>
+            <label for="quantity">Quantidade:</label>
+            <input type="number" id="quantity" name="quantity" value="{{ product[2] }}" required><br>
+            <label for="price">Preço:</label>
+            <input type="text" id="price" name="price" value="{{ product[3] }}" disabled><br>
+            <label for="supplier">Fornecedor:</label>
+            <input type="text" id="supplier" name="supplier" value="{{ product[4] }}" disabled><br>
+            <input type="submit" value="Salvar">
+        </form>
+        <div class="btn-voltar">
+            <a href="{{ url_for('estoque') }}">
+                <button>Voltar</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
