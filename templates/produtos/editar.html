@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Produto{% endblock %}
+
+{% block content %}
+<h1>Editar Produto</h1>
+<form method="POST">
+    <label for="product_name">Nome do Produto:</label>
+    <input type="text" id="product_name" name="product_name" value="{{ product[0] }}" required><br>
+    <label for="brand">Marca:</label>
+    <input type="text" id="brand" name="brand" value="{{ product[1] }}"><br>
+    <label for="price">Preço:</label>
+    <input type="text" id="price" name="price" value="{{ product[2] }}" required><br>
+    <label for="supplier_id">Fornecedor:</label>
+    <select id="supplier_id" name="supplier_id" required>
+        {% for supplier in suppliers %}
+        <option value="{{ supplier[0] }}" {% if supplier[0] == product[3] %}selected{% endif %}>{{ supplier[1] }}</option>
+        {% endfor %}
+    </select><br>
+    <input type="submit" value="Salvar">
+</form>
+<div class="btn-voltar">
+    <a href="{{ url_for('produtos.listar_produtos') }}">
+        <button>Voltar</button>
+    </a>
+</div>
+{% endblock %}

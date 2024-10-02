@@ -1,36 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Estoque</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="header">
-        <h1>Estoque G30</h1>
-    </div>
-    <div class="card-container">
-        <a href="{{ url_for('estoque') }}">
-            <div class="card">
-                <h3>Estoque</h3>
-            </div>
-        </a>
-        <a href="{{ url_for('produtos') }}">
-            <div class="card">
-                <h3>Produtos</h3>
-            </div>
-        </a>
-        <a href="{{ url_for('produtos') }}">
-            <div class="card">
-                <h3>Fornecedores</h3>
-            </div>
-        </a>
-        <a href="{{ url_for('produtos') }}">
-            <div class="card">
-                <h3>Relatório</h3>
-            </div>
-        </a>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Gerenciamento de Estoque{% endblock %}
+
+{% block content %}
+<div class="card-container">
+    <a href="{{ url_for() }}">
+        <div class="card">
+            <h3>Estoque</h3>
+        </div>
+    </a>
+    <a href="{{ url_for('produtos.listar_produtos') }}">
+        <div class="card">
+            <h3>Produtos</h3>
+        </div>
+    </a>
+    <a href="{{ url_for('fornecedores.listar_fornecedores') }}">
+        <div class="card">
+            <h3>Fornecedores</h3>
+        </div>
+    </a>
+    <a href="{{ url_for('relatorio.listar_relatorio') }}">
+        <div class="card">
+            <h3>Relatório</h3>
+        </div>
+    </a>
+</div>
+{% endblock %}

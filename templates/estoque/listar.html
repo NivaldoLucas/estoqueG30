@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Estoque{% endblock %}
+
+{% block content %}
+<table border="1">
+    <tr>
+        <th>Produto</th>
+        <th>Marca</th>
+        <th>Quantidade</th>
+        <th>Preço</th>
+        <th>Fornecedor</th>
+        <th>Ações</th>
+    </tr>
+    {% for item in estoque %}
+    {% if item[3] != 0 %}
+    <tr>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>{{ item[4] }}</td>
+        <td>{{ item[5] }}</td>
+        <td>
+            <a href="{{ url_for('estoque.editar_estoque', id=item[0]) }}">
+                <button>Editar</button>
+            </a>
+        </td>
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+<div class="btn-container">
+    <a href="{{ url_for('index') }}">
+        <button>Voltar</button>
+    </a>
+    <a href="{{ url_for('estoque.adicionar_estoque') }}">
+        <button>Adicionar ao Estoque</button>
+    </a>
+</div>
+{% endblock %}
