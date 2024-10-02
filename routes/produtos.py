@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for
 from . import produtos
 from models import mysql
 
-@produtos.route('/produtos')
+@produtos.route('/')
 def listar_produtos():
     cur = mysql.connection.cursor()
     cur.execute("""
@@ -12,9 +12,9 @@ def listar_produtos():
     """)
     products = cur.fetchall()
     cur.close()
-    return render_template('produtos.html', products=products)
+    return render_template('produtos/listar.html', products=products)
 
-@produtos.route('/adicionar_produto', methods=['GET', 'POST'])
+@produtos.route('/adicionar', methods=['GET', 'POST'])
 def adicionar_produto():
     if request.method == 'POST':
         detalhes = request.form
@@ -33,9 +33,9 @@ def adicionar_produto():
     cur.execute("SELECT id, supplier FROM suppliers")
     suppliers = cur.fetchall()
     cur.close()
-    return render_template('adicionar_produto.html', suppliers=suppliers)
+    return render_template('produtos/adicionar.html', suppliers=suppliers)
 
-@produtos.route('/editar_produto/<int:id>', methods=['GET', 'POST'])
+@produtos.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar_produto(id):
     if request.method == 'POST':
         detalhes = request.form
@@ -60,9 +60,9 @@ def editar_produto(id):
     cur.execute("SELECT id, supplier FROM suppliers")
     suppliers = cur.fetchall()
     cur.close()
-    return render_template('editar_produto.html', product=product, suppliers=suppliers)
+    return render_template('produtos/editar.html', product=product, suppliers=suppliers)
 
-@produtos.route('/deletar_produto/<int:id>', methods=['GET', 'POST'])
+@produtos.route('/deletar/<int:id>', methods=['GET', 'POST'])
 def deletar_produto(id):
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM products WHERE id = %s", [id])

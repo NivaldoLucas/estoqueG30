@@ -5,4 +5,7 @@ produtos = Blueprint('produtos', __name__)
 fornecedores = Blueprint('fornecedores', __name__)
 estoque = Blueprint('estoque', __name__)
 
-from . import produtos, fornecedores, estoque
+# Importar os módulos para registrar os Blueprints
+from . import produtos
+from . import estoque
+from . import fornecedores

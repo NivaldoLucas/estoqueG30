@@ -4,25 +4,25 @@
 
 {% block content %}
 <div class="card-container">
-    <a href="{{ url_for() }}">
+    <a href="{{ url_for('estoque.listar_estoque') }}">
         <div class="card">
             <h3>Estoque</h3>
         </div>
     </a>
-    <a href="{{ url_for('produtos.listar_produtos') }}">
+    
         <div class="card">
             <h3>Produtos</h3>
         </div>
-    </a>
-    <a href="{{ url_for('fornecedores.listar_fornecedores') }}">
+    
+    
         <div class="card">
             <h3>Fornecedores</h3>
         </div>
-    </a>
-    <a href="{{ url_for('relatorio.listar_relatorio') }}">
+    
+   
         <div class="card">
             <h3>Relatório</h3>
         </div>
-    </a>
+    
 </div>
 {% endblock %}

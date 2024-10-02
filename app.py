@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from config import Config
-from models import init_app, mysql
+from models import init_app
 from routes import main, produtos, fornecedores, estoque
 
 app = Flask(__name__)
