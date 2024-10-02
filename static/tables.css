@@ -1,0 +1,109 @@
+body {
+    font-family: 'Akira', sans-serif;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    flex-direction: column;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #D10B0B;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.content {
+    margin-top: 80px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%; 
+}
+
+table {
+    width: 80%; /* Aumenta a largura da tabela */
+    border-collapse: collapse;
+    margin-bottom: 20px; /* Adiciona espaço abaixo da tabela */
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    font-family: 'Akira', sans-serif;
+    background-color: #FB9501;
+}
+
+tr {
+    font-family: 'Gotham-Black', sans-serif;
+    background-color: #830202;
+} 
+
+
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espaço entre os botões */
+    margin-top: 20px; /* Espaço acima dos botões */
+}
+
+button {
+    background-color: #830202;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: 'Akira', sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    transition: transform 0.2s; 
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: #FB9501;
+}
+
+
+
+
+
+@font-face {
+    font-family: 'Akira';
+    src: url('/static/fonts/akira/AkiraExpanded.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Black';
+    src: url('/static/fonts/gotham/Gotham-Black.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('/static/fonts/gotham/Gotham-Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('/static/fonts/gotham/Gotham-Light.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('/static/fonts/gotham/Gotham-Medium.otf') format('truetype');
+}

@@ -1,0 +1,85 @@
+body {
+    font-family: 'Akira', sans-serif;
+    background-color: #000000;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #1c1c1c;
+    padding: 40px; /* Aumenta o padding para mais espaço interno */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 400px; /* Define uma largura maior para o formulário */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Gotham-Bold', sans-serif;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+}
+
+input[type="submit"] {
+    background-color: #830202;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    border: none;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.1);
+}
+
+@font-face {
+    font-family: 'Akira';
+    src: url('/static/fonts/akira/AkiraExpanded.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Black';
+    src: url('/static/fonts/gotham/Gotham-Black.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('/static/fonts/gotham/Gotham-Bold.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('/static/fonts/gotham/Gotham-Light.otf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('/static/fonts/gotham/Gotham-Medium.otf') format('truetype');
+}
