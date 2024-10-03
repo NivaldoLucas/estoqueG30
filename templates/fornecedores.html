@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tables.css') }}">
+    <title>Fornecedores</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Estoque G30</h1>
+    </div>
+    <div class="content">
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Número</th>
+                <th>Email</th>
+                <th>Endereço</th>
+                <th>Site</th>
+                <th>Ações</th>
+            </tr>
+            {% for fornecedores in fornecedores %}
+            <tr>
+                <td>{{ fornecedores[1] }}</td>
+                <td>{{ fornecedores[2] }}</td>
+                <td>{{ fornecedores[3] }}</td>
+                <td>{{ fornecedores[4] }}</td>
+                <td>{{ fornecedores[5] }}</td>
+                <td>
+                    <a href="{{ url_for('editar_fornecedor', id=fornecedores[0]) }}">
+                        <button>Editar</button>
+                    </a>
+                    <a href="{{ url_for('deletar_fornecedor', id=fornecedores[0]) }}">
+                        <button>Deletar</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="btn-container">
+            <a href="{{ url_for('index') }}">
+                <button>Voltar</button>
+            </a>
+            <a href="{{ url_for('adicionar_fornecedor') }}">
+                <button>Novo Fornecedor</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

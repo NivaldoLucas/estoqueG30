@@ -131,8 +131,42 @@ def adicionar_fornecedor():
         cur.execute("INSERT INTO suppliers(supplier, contact, email, address, site) VALUES (%s, %s, %s, %s, %s)", (supplier, contact, email, address, site))
         mysql.connection.commit()
         cur.close()
-        return redirect(url_for('index'))
+        return redirect(url_for('fornecedores'))
     return render_template('adicionar_fornecedor.html')
+
+@app.route('/editar_fornecedor/<int:id>', methods=['GET', 'POST'])
+def editar_fornecedor(id):
+    if request.method == 'POST':
+        detalhes = request.form
+        supplier = detalhes['supplier_name']
+        contact = detalhes['celphone']
+        email = detalhes['email']
+        address = detalhes['address']
+        site = detalhes['site']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE suppliers 
+            SET supplier = %s, contact = %s, email = %s, address = %s, site = %s 
+            WHERE id = %s
+        """, (supplier, contact, email, address, site, id))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('fornecedores'))
+    
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT supplier, contact, email, address, site FROM suppliers WHERE id = %s", [id])
+    suppliers = cur.fetchone()
+    cur.close()
+    return render_template('editar_fornecedor.html', suppliers=suppliers)
+
+@app.route('/deletar_fornecedor/<int:id>', methods=['GET', 'POST'])
+def deletar_fornecedor(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM suppliers WHERE id = %s", [id])
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('fornecedores'))
 
 @app.route('/produtos')
 def produtos():
@@ -154,7 +188,13 @@ def estoque():
     cur.close()
     return render_template('estoque.html', estoque=estoque)
 
-
+@app.route('/fornecedores')
+def fornecedores():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT id, supplier, contact, email, address, site FROM suppliers")
+    fornecedores = cur.fetchall()
+    cur.close()
+    return render_template('fornecedores.html', fornecedores=fornecedores)
 
 
 if __name__ == '__main__':
