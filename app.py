@@ -168,6 +168,56 @@ def deletar_fornecedor(id):
     cur.close()
     return redirect(url_for('fornecedores'))
 
+@app.route('/adicionar_patrimonio', methods=['GET', 'POST'])
+def adicionar_patrimonio():
+    if request.method == 'POST':
+        detalhes = request.form
+        nome = detalhes['nome']
+        marca = detalhes['marca']
+        setor = detalhes['setor']
+        quantidade = detalhes['quantidade']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO patrimonio(nome, marca, setor, quantidade) VALUES (%s, %s, %s, %s)", (nome, marca, setor, quantidade))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('patrimonio'))
+    
+    return render_template('adicionar_patrimonio.html')
+
+@app.route('/editar_patrimonio/<int:id>', methods=['GET', 'POST'])
+def editar_patrimonio(id):
+    if request.method == 'POST':
+        detalhes = request.form
+        nome = detalhes['nome']
+        marca = detalhes['marca']
+        setor = detalhes['setor']
+        quantidade = detalhes['quantidade']
+        
+        cur = mysql.connection.cursor()
+        cur.execute("""
+            UPDATE patrimonio 
+            SET nome = %s, marca = %s, setor = %s, quantidade = %s 
+            WHERE id = %s
+        """, (nome, marca, setor, quantidade, id))
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for('patrimonio'))
+    
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT nome, marca, setor, quantidade FROM patrimonio WHERE id = %s", [id])
+    patrimonio = cur.fetchone()
+    cur.close()
+    return render_template('editar_patrimonio.html', patrimonio=patrimonio)
+
+@app.route('/deletar_patrimonio/<int:id>', methods=['GET', 'POST'])
+def deletar_patrimonio(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM patrimonio WHERE id = %s", [id])
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('patrimonio'))
+
 @app.route('/produtos')
 def produtos():
     cur = mysql.connection.cursor()
@@ -196,6 +246,13 @@ def fornecedores():
     cur.close()
     return render_template('fornecedores.html', fornecedores=fornecedores)
 
+@app.route('/patrimonio')
+def patrimonio():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT id, nome, marca, setor, quantidade FROM patrimonio")
+    patrimonios = cur.fetchall()
+    cur.close()
+    return render_template('patrimonio.html', patrimonios=patrimonios)
 
 if __name__ == '__main__':
     app.run(debug=True)
