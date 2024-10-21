@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tables.css') }}">
+    <title>Patrimônio</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Patrimônio</h1>
+    </div>
+    <div class="content">
+        <table border="1">
+            <tr>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Setor</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+            {% for item in patrimonios %}
+            {% if item[4] != 0 %}
+            <tr>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+                <td>
+                    <a href="{{ url_for('editar_patrimonio', id=item[0]) }}">
+                        <button>Editar</button>
+                    </a>
+                    <a href="{{ url_for('deletar_patrimonio', id=item[0]) }}">
+                        <button>Deletar</button>
+                    </a>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+        <div class="btn-container">
+            <a href="{{ url_for('index') }}">
+                <button>Voltar</button>
+            </a>
+            <a href="{{ url_for('adicionar_patrimonio') }}">
+                <button>Adicionar ao Patrimônio</button>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
