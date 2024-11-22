@@ -15,12 +15,15 @@
         <label for="marca">Marca:</label>
         <input type="text" id="marca" name="marca" required><br>
         
-        <label for="setor">Setor:</label>
+        <label for="setor">Sala:</label>
         <select id="setor" name="setor" required>
-            <option value="" disabled selected>Selecione um setor</option>
-            <option value="infra">Infra</option>
-            <option value="marketing">Marketing</option>
-            <option value="financeiro">Financeiro</option>
+            <option value="" disabled selected>Selecione uma sala</option>
+            <option value="principal">Sala Principal</option>
+            <option value="reunião">Sala de Reuniões</option>
+            <option value="guga">Sala Sala Guga</option>
+            <option value="camila">Sala Camila</option>
+            <option value="mizael">Sala Mizael</option>
+            <option value="delta">Sala Delta</option>            
         </select><br>
         
         <label for="quantidade">Quantidade:</label>
@@ -28,6 +31,11 @@
         
         <input type="submit" value="Adicionar Patrimônio">
     </form>
+    <div class="btn-voltar">
+        <a href="{{ url_for('patrimonio') }}">
+            <button>Voltar</button>
+        </a>
+    </div>
 </body>
 </html>
 

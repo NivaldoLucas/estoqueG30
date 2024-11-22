@@ -15,11 +15,14 @@
         <label for="marca">Marca:</label>
         <input type="text" id="marca" name="marca" value="{{ patrimonio[1] }}" required><br>
         
-        <label for="setor">Setor:</label>
+        <label for="setor">Sala:</label>
         <select id="setor" name="setor" required>
-            <option value="infra" {% if patrimonio[2] == 'infra' %}selected{% endif %}>Infra</option>
-            <option value="marketing" {% if patrimonio[2] == 'marketing' %}selected{% endif %}>Marketing</option>
-            <option value="financeiro" {% if patrimonio[2] == 'financeiro' %}selected{% endif %}>Financeiro</option>
+            <option value="principal" {% if patrimonio[2] == 'principal' %}selected{% endif %}>Sala Principal</option>
+            <option value="reunião" {% if patrimonio[2] == 'reunião' %}selected{% endif %}>Sala de Reuniões</option>
+            <option value="guga" {% if patrimonio[2] == 'guga' %}selected{% endif %}>Sala Guga</option>
+            <option value="camila" {% if patrimonio[2] == 'camila' %}selected{% endif %}>Sala Camila</option>
+            <option value="mizael" {% if patrimonio[2] == 'mizael' %}selected{% endif %}>Sala Mizael</option>
+            <option value="delta" {% if patrimonio[2] == 'delta' %}selected{% endif %}>Sala Delta</option>
         </select><br>
         
         <label for="quantidade">Quantidade:</label>
